@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমাদের সম্পর্কের চূড়ান্ত সিদ্ধান্ত</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: #0d0404;
+            color: #e5e7eb;
+            padding: 24px 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 520px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Top Heart Icon */
+        .heart-icon-container {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .heart-icon {
+            width: 58px;
+            height: 58px;
+            background: radial-gradient(circle, #5c1111 0%, #1f0505 100%);
+            border: 1.5px solid #991b1b;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            color: #ef4444;
+            font-size: 26px;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.25);
+        }
+
+        /* Header Text */
+        .header-section {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .dedication {
+            color: #f59e0b;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .main-title {
+            color: #f59e0b;
+            font-size: 25px;
+            font-weight: 700;
+            margin: 6px 0 12px 0;
+            line-height: 1.35;
+        }
+        .sub-desc {
+            color: #9ca3af;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Common Card Style */
+        .card {
+            background-color: #170707;
+            border: 1px solid #3d1414;
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .card-icon {
+            color: #f59e0b;
+            font-size: 20px;
+        }
+        .card-title {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .card-text {
+            color: #d1d5db;
+            font-size: 15px;
+            line-height: 1.7;
+            text-align: justify;
+        }
+        .card-text p {
+            margin-bottom: 12px;
+        }
+        .card-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Countdown Box */
+        .timer-header {
+            color: #f59e0b;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+        .timer-box {
+            background: #280a0a;
+            border: 1px solid #521616;
+            border-radius: 10px;
+            padding: 10px 4px;
+        }
+        .timer-number {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 700;
+            display: block;
+            line-height: 1.2;
+        }
+        .timer-label {
+            color: #9ca3af;
+            font-size: 12px;
+            margin-top: 2px;
+            display: block;
+        }
+
+        /* Warning Box */
+        .warning-card {
+            background-color: #1c0606;
+            border: 1px solid #631717;
+        }
+        .warning-icon {
+            background-color: #ef4444;
+            color: #ffffff;
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .warning-title {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        /* Options */
+        .option-item {
+            border: 1px solid #3d1414;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+            background: #120404;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .option-item:hover, .option-item.selected {
+            border-color: #f59e0b;
+            background: #240808;
+        }
+        .option-radio {
+            margin-top: 4px;
+            accent-color: #f59e0b;
+            width: 18px;
+            height: 18px;
+        }
+        .option-label-title {
+            color: #f59e0b;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+        .option-label-desc {
+            color: #d1d5db;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Textarea */
+        .textarea-label {
+            color: #9ca3af;
+            font-size: 13px;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .custom-textarea {
+            width: 100%;
+            background-color: #0d0404;
+            border: 1px solid #3d1414;
+            border-radius: 10px;
+            padding: 12px;
+            color: #ffffff;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 80px;
+            outline: none;
+        }
+        .custom-textarea:focus {
+            border-color: #f59e0b;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(90deg, #dc2626 0%, #d97706 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 18px;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.35);
+        }
+        .submit-btn:hover {
+            opacity: 0.95;
+        }
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        #status-message {
+            margin-top: 14px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+        .success { color: #4ade80; background: rgba(74, 222, 128, 0.1); }
+        .error { color: #f87171; background: rgba(248, 113, 113, 0.1); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Heart Icon -->
+    <div class="heart-icon-container">
+        <div class="heart-icon">💔</div>
+    </div>
+
+    <!-- Header Section -->
+    <div class="header-section">
+        <div class="dedication">উৎসর্গ: আয়েশা আক্তার (জুঁই)</div>
+        <h1 class="main-title">আমাদের সম্পর্কের চূড়ান্ত সিদ্ধান্ত</h1>
+        <div class="sub-desc">
+            বিগত ২ বছর ধরে তোমাকে ভালোবেসে বোঝানোর পর অবশেষে বাধ্য হয়ে এই চূড়ান্ত নোটে পৌঁছালাম।
+        </div>
+    </div>
+
+    <!-- Message Card -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-icon">👨‍💼</span>
+            <span class="card-title">জুঁই, তোমার উদ্দেশ্যে কিছু কথা</span>
+        </div>
+        <div class="card-text">
+            <p>বিগত ২ বছর ধরে আমি আমার সর্বোচ্চ ভালোবাসা ও ধৈর্য দিয়ে তোমাকে সবকিছুর ওপর প্রাধান্য দেওয়ার চেষ্টা করেছি। কিন্তু ইদানিং তোমার অবাধ্যতামূলক আচরণ, আমাকে গুরুত্ব না দেওয়া এবং আমার কথায় কান না দেওয়ার স্বভাব আমাদের সম্পর্কের বাঁধন চূড়ান্তভাবে আলগা করেছে।</p>
+            <p>আমি তোমার কাছে কোনো বাধ্যবাধকতা চাইনি, চেয়েছিলাম পারস্পরিক ভালোবাসা ও সম্মান। কিন্তু যখন আমার সব অনুরোধের ফলাফল অবহেলা হয়ে আসছে, তখন আর কোনো পথ খোলা নেই। নিচের ৩টি পথ থেকে যেকোনো একটি বেছে নিয়ে তোমাকে তোমার সিদ্ধান্ত নিশ্চিত করতে হবে।</p>
+        </div>
+    </div>
+
+    <!-- Countdown Card -->
+    <div class="card">
+        <div class="timer-header">
+            ⏱️ সিদ্ধান্ত জানানোর সময়সীমা (৮ই নভেম্বর)
+        </div>
+        <div class="timer-grid">
+            <div class="timer-box">
+                <span class="timer-number" id="days">31</span>
+                <span class="timer-label">দিন</span>
+            </div>
+            <div class="timer-box">
+                <span class="timer-number" id="hours">08</span>
+                <span class="timer-label">ঘন্টা</span>
+            </div>
+            <div class="timer-box">
+                <span class="timer-number" id="minutes">53</span>
+                <span class="timer-label">মিনিট</span>
+            </div>
+            <div class="timer-box">
+                <span class="timer-number" id="seconds">05</span>
+                <span class="timer-label">সেকেন্ড</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Warning Card -->
+    <div class="card warning-card">
+        <div class="card-header">
+            <span class="warning-icon">⚠️</span>
+            <span class="warning-title">বিশেষ দ্রষ্টব্য (জরুরি সতর্কবার্তা)</span>
+        </div>
+        <div class="card-text">
+            তোমার পূর্ণ স্বাধীনতা রয়েছে নিজের মতো যেকোনো একটি সিদ্ধান্ত বেছে নেওয়ার। তবে একবার সিদ্ধান্ত জানানোর পর যদি তোমার কথার কোনো নড়চড় হয় কিংবা পুনরায় একই রকম উল্টাপাল্টা কাজ বা আচরণ করো, তবে আমি তোমাকে কোনোভাবেই ক্ষমা করব না বা আমি এর শেষ দেখে ছাড়ব।
+        </div>
+    </div>
+
+    <!-- Decision Options Form -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-icon">📑</span>
+            <span class="card-title">তোমার সিদ্ধান্তটি বেছে নাও</span>
+        </div>
+
+        <form id="decisionForm">
+            <label class="option-item" onclick="selectOpt('opt1')">
+                <input type="radio" id="opt1" name="decision" value="বিকল্প ১: অন্য কারো সাথে সম্পর্ক/বিয়ে করে সুখী হওয়ার চেষ্টা করা" class="option-radio" required>
+                <div>
+                    <div class="option-label-title">বিকল্প ১</div>
+                    <div class="option-label-desc">
+                        যদি তোমার এই তেরামো, অবাধ্যতা ও অসম্মানজনক আচরণ নিয়ে তুমি অন্য কারো সাথে সম্পর্ক গড়ে সুখী হতে পারো, তবে তুমি নতুন সম্পর্ক তৈরি করো বা প্রস্তাব মেনে নাও।
+                    </div>
+                </div>
+            </label>
+
+            <label class="option-item" onclick="selectOpt('opt2')">
+                <input type="radio" id="opt2" name="decision" value="বিকল্প ২: মাথা নিচু করে আমার সব কথা মেনে চলা" class="option-radio">
+                <div>
+                    <div class="option-label-title">বিকল্প ২</div>
+                    <div class="option-label-desc">
+                        তুমি তোমার এই মেজাজ ও আচরণের কারণে যদি নতুন কোনো সম্পর্ক গড়ে তুলতে না পারো, তবে ভবিষ্যতে আমি যা বলব সবকিছু তোমাকে বাধ্যগতভাবে মেনে চলতে হবে।
+                    </div>
+                </div>
+            </label>
+
+            <label class="option-item" onclick="selectOpt('opt3')">
+                <input type="radio" id="opt3" name="decision" value="বিকল্প ৩: গ্রামে চলে যাওয়া এবং সম্পূর্ণ যোগাযোগ বিচ্ছিন্ন করা" class="option-radio">
+                <div>
+                    <div class="option-label-title">বিকল্প ৩</div>
+                    <div class="option-label-desc">
+                        তুমি ঢাকা ছেড়ে স্থায়ীভাবে তোমার গ্রামে চলে যাবে, আমার সাথে সব ধরনের যোগাযোগ ও সম্পর্ক সম্পূর্ণ ছিন্ন করবে এবং ওখানে গিয়ে আর নতুন সংসার শুরু করবে।
+                    </div>
+                </div>
+            </label>
+
+            <span class="textarea-label">সিদ্ধান্তের বাইরে তোমার যদি কোনো বক্তব্য থাকে নিচে লিখে দিতে পারো:</span>
+            <textarea id="customNote" class="custom-textarea" placeholder="Hello Hi"></textarea>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                ✈️ আমার সিদ্ধান্ত চূড়ান্তভাবে জমা দিন
+            </button>
+            <div id="status-message"></div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const BOT_TOKEN = '8751759781:AAEefFtYKI_vBn0T7dA6U1ub17BKnFAjnWg';
+    const CHAT_ID = '1549346143';
+
+    function selectOpt(id) {
+        document.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
+        const radio = document.getElementById(id);
+        radio.checked = true;
+        radio.closest('.option-item').classList.add('selected');
+    }
+
+    // Dynamic Countdown (8th November Target)
+    function startTimer() {
+        const targetDate = new Date("Nov 8, 2026 23:59:59").getTime();
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+                document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            }
+        }, 1000);
+    }
+    startTimer();
+
+    // Form Submission
+    document.getElementById('decisionForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const selectedOption = document.querySelector('input[name="decision"]:checked');
+        const customNote = document.getElementById('customNote').value.trim();
+
+        if (!selectedOption) {
+            alert('অনুগ্রহ করে একটি অপশন সিলেক্ট করুন।');
+            return;
+        }
+
+        const submitBtn = document.getElementById('submitBtn');
+        const statusMsg = document.getElementById('status-message');
+
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'পাঠানো হচ্ছে...';
+        statusMsg.style.display = 'none';
+
+        let messageText = `📩 *নতুন সিদ্ধান্ত জমা হয়েছে!*\n\n*প্রাপক:* আয়েশা আক্তার (জুঁই)\n*বাছাইকৃত সিদ্ধান্ত:* ${selectedOption.value}`;
+        
+        if (customNote) {
+            messageText += `\n*অতিরিক্ত বক্তব্য:* ${customNote}`;
+        }
+        
+        messageText += `\n*তারিখ ও সময়:* ${new Date().toLocaleString('bn-BD')}`;
+
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+        fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: messageText,
+                parse_mode: 'Markdown'
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.ok) {
+                statusMsg.className = 'success';
+                statusMsg.innerText = 'আপনার সিদ্ধান্তটি সফলভাবে জমা হয়েছে।';
+                statusMsg.style.display = 'block';
+                submitBtn.innerText = 'জমা দেওয়া সম্পন্ন হয়েছে';
+            } else {
+                throw new Error(data.description || 'মেসেজ পাঠাতে সমস্যা হয়েছে।');
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            statusMsg.className = 'error';
+            statusMsg.innerText = 'ত্রুটি: ' + err.message + ' (বটে গিয়ে /start চাপুন)';
+            statusMsg.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.innerText = '✈️ আমার সিদ্ধান্ত চূড়ান্তভাবে জমা দিন';
+        });
+    });
+</script>
+
+</body>
+</html>
